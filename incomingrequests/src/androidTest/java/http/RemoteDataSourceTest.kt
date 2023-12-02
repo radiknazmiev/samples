@@ -28,7 +28,7 @@ class RemoteDataSourceTest {
         runBlocking {
             val queryMap = object : HashMap<String, String>() {
                 init {
-                    put("access_token", "vk1.a.oXGEUNgGpjRJGvQTdVJEezMKL8L43eZMnsp3j-AM5UEpHGVw1eO8r6l4n_RjAPvmDgImIjkUc4XjLbDD-hRzD9Omv5HMb7KgKSpDgAwpermMRoQ43NUGj-BKtlxaw1I1CG3PI451RTlReOzjnVK8MljcVSrjtgYpBeuMZ__PGnTTGew2ec0ueSYlb5kHA6L5")
+                    put("access_token", "secret")
                     put("v", "5.154")
                     put("need_viewed", "1")
                 }
