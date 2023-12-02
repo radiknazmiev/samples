@@ -1,0 +1,4 @@
+<resources>
+    <string name="txt_getting_list_requests"><![CDATA[Getting a list of requests <br>]]></string>
+    <string name="txt_accepting_request_from"><![CDATA[Accepting a request from %1$d <br>]]></string>
+</resources>

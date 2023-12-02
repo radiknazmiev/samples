@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_name" translatable="false">Worker</string>
+    <string name="channel_description" translatable="false">Worker main notification channel</string>
+
+    <string name="core_txt_repeat_task">Repeat task</string>
+    <string name="core_txt_send_accompanying_messages">Send accompanying messages</string>
+    <string name="core_txt_accept_incoming_requests">Accept incoming requests</string>
+    <string name="core_txt_start_account_processing"><![CDATA[Start account processing <br>]]></string>
+    <string name="core_txt_processing_complete"><![CDATA[Processing is complete <br><br>]]></string>
+
+    <string name="core_txt_task_account_string" translatable="false"><![CDATA[<font color="#0ACF00">%1$s</font><br>]]></string>
+
+    <plurals name="plurals_days">
+        <item quantity="zero">no day</item>
+        <item quantity="one">%1$d day</item>
+        <item quantity="two">%1$d days</item>
+        <item quantity="few">%1$d days</item>
+        <item quantity="many">%1$d days</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+</resources>

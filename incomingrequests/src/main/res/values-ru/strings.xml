@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_getting_list_requests">Получаю список запросов <br/></string>
+    <string name="txt_accepting_request_from">Принимаю запрос от %1$d <br/></string>
+</resources>
