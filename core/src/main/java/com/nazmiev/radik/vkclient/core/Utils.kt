@@ -12,6 +12,12 @@ object Constants {
     const val TASK_STATUS_WAITING = 1
     const val TASK_STATUS_RUNNING = 2
     const val TASK_STATUS_PLANNED = 3
+
+    const val CAPTCHA_DEFAULT_ANTIGATE_SERVICE = "default_antigate_service"
+    const val CAPTCHA_RUCAPTCHA_KEY = "rucapcha_key"
+    const val CAPTCHA_CPTCH_KEY = "cptch_key"
+    const val CAPTCHA_ANTI_CAPTCHA_KEY = "anti_captcha_key"
+    const val CAPTCHA_BOT_CAPTCHA_KEY = "3bot_captcha_key"
 }
 
 object RequestFields {

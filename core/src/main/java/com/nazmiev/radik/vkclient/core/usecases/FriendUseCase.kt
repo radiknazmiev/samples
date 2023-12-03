@@ -7,7 +7,7 @@ import com.nazmiev.radik.vkclient.core.http.models.FriendRequests
 
 interface FriendUseCase {
 
-    fun initRepository(httpService: HttpService)
+    fun initProxiedRepository(httpService: HttpService)
 
     suspend fun getOutRequests(
         accessToken: String,

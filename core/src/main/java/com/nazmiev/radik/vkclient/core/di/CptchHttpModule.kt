@@ -1,12 +1,10 @@
 package com.nazmiev.radik.vkclient.core.di
 
-import android.content.Context
 import com.nazmiev.radik.vkclient.core.BuildConfig
-import com.nazmiev.radik.vkclient.core.http.HttpService
+import com.nazmiev.radik.vkclient.core.http.CaptchaHttpService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -14,22 +12,23 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class HttpModule {
+class CptchHttpModule {
 
     @Provides
     @Singleton
-    @Named("VKAPI")
-    fun providesBaseUrl() : String = "https://api.vk.com/method/"
+    @Named("cptch")
+    fun providesBaseUrl() : String = "https://cptch.net/"
 
     @Provides
     @Singleton
-    @Named("VKAPI")
+    @Named("cptch")
     internal fun provideOkhttpClient(): OkHttpClient {
 
         val client = OkHttpClient.Builder()
@@ -58,8 +57,9 @@ class HttpModule {
 
     @Provides
     @Singleton
-    @Named("VKAPI")
-    fun provideRetrofit(@Named("VKAPI") BASE_URL : String, @Named("VKAPI") okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
+    @Named("cptch")
+    fun provideRetrofit(@Named("cptch") BASE_URL : String, @Named("cptch") okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
+        .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .baseUrl(BASE_URL)
@@ -68,11 +68,7 @@ class HttpModule {
 
     @Provides
     @Singleton
-    @Named("VKAPI")
-    fun provideMainService(@Named("VKAPI") retrofit : Retrofit) : HttpService = retrofit.create(HttpService::class.java)
-
-//    @Provides
-//    @Singleton
-//    @Named("VKAPI")
-//    fun provideMainRemoteData(@Named("VKAPI") mainService : HttpService) : RemoteDataSource = RemoteDataSource(mainService)
+    @Named("cptch")
+    fun provideMainService(@Named("cptch") retrofit : Retrofit) : CaptchaHttpService = retrofit.create(
+        CaptchaHttpService::class.java)
 }

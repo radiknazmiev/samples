@@ -2,16 +2,24 @@ package com.nazmiev.radik.vkclient.core.usecases
 
 import com.nazmiev.radik.vkclient.core.Constants
 import com.nazmiev.radik.vkclient.core.http.HttpService
-import com.nazmiev.radik.vkclient.core.repositories.FriendsRepositoryImpl
 import com.nazmiev.radik.vkclient.core.http.models.FriendAdd
 import com.nazmiev.radik.vkclient.core.http.models.FriendRequests
 import com.nazmiev.radik.vkclient.core.repositories.FriendsRepository
 import javax.inject.Inject
+import javax.inject.Named
 
-class FriendUseCaseImpl @Inject constructor(private val friendsRepository: FriendsRepository) :
+class FriendUseCaseImpl @Inject constructor(
+    private val friendsRepository: FriendsRepository,
+    @Named("VKAPI") private val httpService: HttpService
+) :
     FriendUseCase {
 
-    override fun initRepository(httpService: HttpService) {
+    //если забудут передать httpService
+    init {
+        friendsRepository.httpService = httpService
+    }
+
+    override fun initProxiedRepository(httpService: HttpService) {
         friendsRepository.httpService = httpService
     }
 

@@ -11,5 +11,5 @@ sealed class State {
         val repeatPeriod: Float,
         val isSendMessage: Boolean
     ) : State()
-    data class Finish(val taskId: Int, val isRepeat: Boolean, val repeatPeriod: Long): State()
+    data class Finish(val taskId: Int, val isRepeat: Boolean, val repeatPeriod: Long, val isSendMessage: Boolean): State()
 }

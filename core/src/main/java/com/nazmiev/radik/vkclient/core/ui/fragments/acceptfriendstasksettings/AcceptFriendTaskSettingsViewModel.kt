@@ -150,8 +150,13 @@ class AcceptFriendTaskSettingsViewModel @Inject constructor(
             _state.value = State.Finish(
                 taskId.toInt(),
                 sharedPreferences.getBoolean(ACCEPT_FRIENDS_TASK_IS_REPEAT, false),
-                TimeUnit.DAYS.toMillis(sharedPreferences.getFloat(ACCEPT_FRIENDS_TASK_REPEAT_PERIOD, 0F)
-                    .toLong())
+                TimeUnit.DAYS.toMillis(
+                    sharedPreferences.getFloat(ACCEPT_FRIENDS_TASK_REPEAT_PERIOD, 0F)
+                        .toLong()
+                ),
+                sharedPreferences.getBoolean(
+                    ACCEPT_FRIENDS_TASK_SEND_MESSAGE, false
+                )
             )
         }
     }

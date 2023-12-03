@@ -16,7 +16,8 @@ class PreferencesModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context) : SharedPreferences {
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        //такое название preferences заложилось исторически
         return context.getSharedPreferences("accaunt_settings", 0)
     }
 }

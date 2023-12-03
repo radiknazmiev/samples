@@ -36,7 +36,7 @@ import com.nazmiev.radik.vkclient.core.ui.common.UsersList
 @Composable
 fun AcceptFriendsTaskSettings(
     viewModel: AcceptFriendTaskSettingsViewModel = viewModel(),
-    finish: (Boolean, Int, Boolean, Long) -> Unit
+    finish: (Boolean, Int, Boolean, Long, Boolean) -> Unit
 ) {
     val uiState = viewModel.state.collectAsState()
     val userCheck = { user: User ->
@@ -63,7 +63,7 @@ fun AcceptFriendsTaskSettings(
                 title = { Text(text = "") },
                 navigationIcon = {
                     IconButton(onClick = {
-                        finish(false, 0, false, 0)
+                        finish(false, 0, false, 0, false)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
@@ -114,7 +114,7 @@ fun AcceptFriendsTaskSettings(
 
             is State.Finish -> {
                 val state = (uiState.value as State.Finish)
-                finish(true, state.taskId, state.isRepeat, state.repeatPeriod)
+                finish(true, state.taskId, state.isRepeat, state.repeatPeriod, state.isSendMessage)
             }
         }
     }

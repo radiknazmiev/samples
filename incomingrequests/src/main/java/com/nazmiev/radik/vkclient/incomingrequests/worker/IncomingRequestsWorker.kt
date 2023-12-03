@@ -11,8 +11,11 @@ import com.nazmiev.radik.vkclient.core.NotificationBuilder
 import com.nazmiev.radik.vkclient.core.db.models.TaskHistory
 import com.nazmiev.radik.vkclient.core.http.criticalErrors
 import com.nazmiev.radik.vkclient.core.ui.activitys.TaskSettingsActivity.Companion.FIELD_TASK_ID
+import com.nazmiev.radik.vkclient.core.ui.activitys.TaskSettingsActivity.Companion.FIELD_TASK_SEND_ACCOMPANYING_MESSAGES
+import com.nazmiev.radik.vkclient.core.usecases.CaptchaUseCase
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCase
 import com.nazmiev.radik.vkclient.core.usecases.FriendUseCase
+import com.nazmiev.radik.vkclient.core.usecases.MessageUseCase
 import com.nazmiev.radik.vkclient.core.usecases.ProxyUseCase
 import com.nazmiev.radik.vkclient.core.usecases.SharedPreferencesUseCase
 import com.nazmiev.radik.vkclient.core.usecases.TaskUseCase
@@ -20,6 +23,7 @@ import com.nazmiev.radik.vkclient.incomingrequests.R
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.delay
+import java.util.Calendar
 
 @HiltWorker
 class IncomingRequestsWorker @AssistedInject constructor(
@@ -29,7 +33,9 @@ class IncomingRequestsWorker @AssistedInject constructor(
     private val taskUseCase: TaskUseCase,
     private val proxyUseCase: ProxyUseCase,
     private val dateUseCase: DateUseCase,
-    private val friendUseCase: FriendUseCase
+    private val friendUseCase: FriendUseCase,
+    private val messageUseCase: MessageUseCase,
+    private val captchaUseCase: CaptchaUseCase
 ) : CoroutineWorker(appContext, params) {
 
     private var offset = 0
@@ -43,6 +49,7 @@ class IncomingRequestsWorker @AssistedInject constructor(
         window.open()
 
         val taskId = inputData.getInt(FIELD_TASK_ID, 0)
+        val isSendMessage = inputData.getBoolean(FIELD_TASK_SEND_ACCOMPANYING_MESSAGES, false)
         val taskUsers = taskUseCase.getTaskUsers(taskId)
 
         val currentDate = dateUseCase.getCurrentDate()
@@ -57,7 +64,6 @@ class IncomingRequestsWorker @AssistedInject constructor(
         setProgress(workDataOf(Progress to progress))
         addTaskHistory(appContext.getString(R.string.core_txt_start_account_processing), currentDate, 0)
 
-        //обрабатываем все аккаунты
         taskUsers.forEach { user ->
 
             accountNumber++
@@ -69,9 +75,8 @@ class IncomingRequestsWorker @AssistedInject constructor(
             addTaskHistory(progressString, currentDate, user.login!!.toInt())
             sendNotification()
 
-            friendUseCase.initRepository(proxyUseCase.getProxyHttpClient(user.login?.toInt()!!))
+            friendUseCase.initProxiedRepository(proxyUseCase.getProxyHttpClient(user.login?.toInt()!!))
 
-            //в цикле обрабатываем все входящие завки в друзья
             mainLoop@ while (true) {
                 delay(sharedPreferencesUseCase.getPauseMSeconds().toLong())
 
@@ -131,6 +136,10 @@ class IncomingRequestsWorker @AssistedInject constructor(
                                 delay(sharedPreferencesUseCase.getPauseMSeconds().toLong())
                                 continue
                             }
+                        } else {
+                            if (isSendMessage) {
+                                sendMessage(friendId)
+                            }
                         }
 
                         delay(sharedPreferencesUseCase.getPauseMSeconds().toLong())
@@ -175,6 +184,11 @@ class IncomingRequestsWorker @AssistedInject constructor(
                 threadNumber = 1
             )
         )
+    }
+
+    private suspend fun sendMessage(friendId: Int) {
+        val hours = Calendar.getInstance().time.time / 1000 / 60 / 60 / 60
+        messageUseCase.sendMessage(friendId, hours.toInt(), "", "")
     }
 
     companion object {

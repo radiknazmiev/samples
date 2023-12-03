@@ -1,7 +1,11 @@
 package com.nazmiev.radik.vkclient.core.di
 
+import com.nazmiev.radik.vkclient.core.repositories.CaptchaRepository
+import com.nazmiev.radik.vkclient.core.repositories.CaptchaRepositoryImpl
 import com.nazmiev.radik.vkclient.core.repositories.FriendsRepository
 import com.nazmiev.radik.vkclient.core.repositories.FriendsRepositoryImpl
+import com.nazmiev.radik.vkclient.core.repositories.MessageRepositoryImpl
+import com.nazmiev.radik.vkclient.core.repositories.MessagesRepository
 import com.nazmiev.radik.vkclient.core.repositories.ProxyRepository
 import com.nazmiev.radik.vkclient.core.repositories.ProxyRepositoryImpl
 import com.nazmiev.radik.vkclient.core.repositories.TaskRepository
@@ -28,4 +32,10 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun provideFriendsRepository(friendsRepositoryImpl: FriendsRepositoryImpl): FriendsRepository
+
+    @Binds
+    abstract fun provideMessagesRepository(messageRepositoryImpl: MessageRepositoryImpl): MessagesRepository
+
+    @Binds
+    abstract fun provideCaptchaRepository(captchaRepositoryImpl: CaptchaRepositoryImpl): CaptchaRepository
 }

@@ -1,12 +1,16 @@
 package com.nazmiev.radik.vkclient.core.di
 
 import android.content.SharedPreferences
+import com.nazmiev.radik.vkclient.core.usecases.CaptchaUseCase
+import com.nazmiev.radik.vkclient.core.usecases.CaptchaUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCase
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.FriendUseCase
 import com.nazmiev.radik.vkclient.core.usecases.FriendUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.LocalUserUseCase
 import com.nazmiev.radik.vkclient.core.usecases.LocalUserUseCaseImpl
+import com.nazmiev.radik.vkclient.core.usecases.MessageUseCase
+import com.nazmiev.radik.vkclient.core.usecases.MessageUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.ProxyUseCase
 import com.nazmiev.radik.vkclient.core.usecases.ProxyUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.RemoteUserUseCase
@@ -47,4 +51,10 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun provideTaskUseCase(taskUseCaseImpl: TaskUseCaseImpl): TaskUseCase
+
+    @Binds
+    abstract fun provideMessageUseCase(messageUseCaseImpl: MessageUseCaseImpl): MessageUseCase
+
+    @Binds
+    abstract fun provideCaptchaUseCase(captchaUseCaseImpl: CaptchaUseCaseImpl): CaptchaUseCase
 }

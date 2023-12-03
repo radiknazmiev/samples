@@ -19,7 +19,7 @@ class TaskSettingsActivity : ComponentActivity() {
         val taskType = intent.extras?.getString(FIELD_TASK_TYPE)
 
         val finish =
-            { withResult: Boolean, taskId: Int, isRepeatTask: Boolean, repeatPeriod: Long ->
+            { withResult: Boolean, taskId: Int, isRepeatTask: Boolean, repeatPeriod: Long, isSendMessage: Boolean ->
                 if (withResult) {
                     setResult(
                         0,
@@ -27,6 +27,7 @@ class TaskSettingsActivity : ComponentActivity() {
                             .putExtra(
                                 FIELD_TASK_IS_REPEAT, isRepeatTask
                             ).putExtra(FIELD_TASK_REPEAT_PERIOD, repeatPeriod)
+                            .putExtra(FIELD_TASK_SEND_ACCOMPANYING_MESSAGES, isSendMessage)
                     )
                 }
                 finish()
@@ -49,6 +50,7 @@ class TaskSettingsActivity : ComponentActivity() {
         const val FIELD_TASK_IS_REPEAT = "task_is_repeat"
         const val FIELD_TASK_ID = "task_id"
         const val FIELD_TASK_REPEAT_PERIOD = "task_repeat_period"
+        const val FIELD_TASK_SEND_ACCOMPANYING_MESSAGES = "task_send_accompanying_messages"
 
         const val TASK_ACCEPT_FRIENDS = "task_accept_friends"
     }

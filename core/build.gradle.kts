@@ -10,7 +10,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -48,6 +48,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.test:monitor:1.6.1")
     val room_version = "2.5.2"
     val RETROFIT_VERSION = "2.9.0"
 
@@ -86,6 +87,7 @@ dependencies {
     api("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION")
     api("com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION")
     api("com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION")
+    api("com.squareup.retrofit2:converter-scalars:$RETROFIT_VERSION")
     api("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
     api("io.coil-kt:coil-compose:2.2.2")
