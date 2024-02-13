@@ -5,4 +5,6 @@ interface DateUseCase {
     fun getCurrentDateTime(): String
 
     fun getCurrentDate(): String
+
+    fun getFutureDateTime(milliseconds: Int): String
 }

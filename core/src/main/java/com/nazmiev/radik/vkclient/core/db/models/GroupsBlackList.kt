@@ -6,9 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "groups_black_list")
 data class GroupsBlackList(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "group_id")
     val groupId: Int,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

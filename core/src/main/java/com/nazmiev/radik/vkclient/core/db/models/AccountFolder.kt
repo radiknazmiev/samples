@@ -6,9 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "account_folders")
 data class AccountFolder(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "name")
     val name: String
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

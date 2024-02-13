@@ -6,10 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
 data class User (
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
-    @ColumnInfo(name = "acc_tocken")
+    @ColumnInfo(name = "access_token")
     val accessToken: String?,
     @ColumnInfo(name = "last_search")
     val lastSearch: String?,
@@ -19,7 +16,7 @@ data class User (
     val login: String?,
     @ColumnInfo(name = "requests_count")
     val requestsCount: Int?,
-    @ColumnInfo(name = "incomplite_search")
+    @ColumnInfo(name = "incomplete_search")
     val incompleteSearch: String?,
     @ColumnInfo(name = "skip_processing")
     val skipProcessing: Int?,
@@ -40,3 +37,8 @@ data class User (
     @ColumnInfo(name = "updated_at")
     val updatedAt: String?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

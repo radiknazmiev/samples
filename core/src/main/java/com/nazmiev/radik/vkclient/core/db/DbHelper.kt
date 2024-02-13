@@ -1,10 +1,7 @@
 package com.nazmiev.radik.vkclient.core.db
 
 import android.app.Application
-import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -90,18 +87,18 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
                 + KEY_PROXY_LOGIN + " text,"
                 + KEY_PROXY_PASSWORD + " text,"
                 + KEY_IS_DEF + " integer,"
-                + KEY_ACCAUNT + " integer" + ");")
+                + KEY_ACCOUNT + " integer" + ");")
 
     private val CREATE_TABLE_PROXY_TO_ACCAUNT =
         ("create table if not exists " + TABLE_PROXY_ACCOUNT + " ("
                 + KEY_ID + " integer primary key autoincrement,"
-                + KEY_ACCAUNT + " integer,"
+                + KEY_ACCOUNT + " integer,"
                 + KEY_PROXY + " integer" + ");")
 
     private val CREATE_TABLE_SEARCH_SETTINGS =
         ("create table if not exists " + TABLE_SEARCH_SETTINGS + " ("
                 + KEY_ID + " integer primary key autoincrement,"
-                + KEY_ACCAUNT + " integer,"
+                + KEY_ACCOUNT + " integer,"
                 + KEY_SEARCH_SOURCE + " integer,"
                 + KEY_INVITE_TO_GROUP + " integer,"
                 + KEY_GROUP_LINK + " integer,"
@@ -166,7 +163,7 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
     private val CREATE_TABLE_ACCOUNT_SELECTED_CHATS =
         ("create table if not exists " + TABLE_ACCOUNT_SELECTED_CHATS + " ("
                 + KEY_CHAT_ID + " integer,"
-                + KEY_ACCAUNT + " integer" + ");")
+                + KEY_ACCOUNT + " integer" + ");")
 
     private val CREATE_TABLE_GROUP_CHAT_MESSAGE =
         ("create table if not exists " + TABLE_GROUP_CHAT_MESSAGE + " ("
@@ -327,7 +324,7 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
     private val CREATE_TABLE_SELECTED_ACCOUNTS_FOR_SCRIPT =
         ("create table if not exists " + TABLE_SELECTED_ACCOUNTS_FOR_SCRIPT + " ("
                 + KEY_SCRIPT_ID + " integer,"
-                + KEY_ACCAUNT + " integer" + ");")
+                + KEY_ACCOUNT + " integer" + ");")
 
     private val CREATE_TABLE_POSTING_ACCOUNT_WALL_SETTINGS =
         ("create table if not exists " + TABLE_POSTING_ACCOUNT_WALL_SETTINGS + " ("
@@ -353,7 +350,7 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
                 + KEY_IS_FULL + " integer,"
                 + KEY_IS_PAYED + " integer,"
                 + KEY_THREAD_NUMBER + " integer,"
-                + KEY_ACCAUNT + " integer" + ");")
+                + KEY_ACCOUNT + " integer" + ");")
 
     private val CREATE_TABLE_TASK_HISTORY =
         ("CREATE TABLE if not exists task_history (`id` INTEGER NOT NULL,task_type integer NOT NULL,history_text text NOT NULL,history_time text NOT NULL,current_d text NOT NULL,user_id integer NOT NULL,thread_number integer NOT NULL, PRIMARY KEY(`id`));")
@@ -701,10 +698,10 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
         const val TABLE_PARTNERS = "partners"
         const val TABLE_DISTRIBUTION_LIST = "distribution_list"
         const val TABLE_PROXY_LIST = "proxy_list"
-        const val TABLE_PROXY_ACCOUNT = "proxy_accaunt"
+        const val TABLE_PROXY_ACCOUNT = "proxy_account"
         const val TABLE_SEARCH_SETTINGS = "search_settings"
         const val TABLE_SENT_INVITATIONS = "sent_invitations"
-        const val TABLE_WELCOME_MESSAGE = "welcom_message"
+        const val TABLE_WELCOME_MESSAGE = "welcome_message"
         const val TABLE_PRIVATE_MESSAGE = "private_message"
         const val TABLE_RESPONSE_MESSAGE = "response_message"
         const val TABLE_VK_GROUPS = "vk_groups"
@@ -738,12 +735,12 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
 
         const val KEY_ID = "_id"
         const val KEY_PID = "pid"
-        const val KEY_ACC_TOCKEN = "acc_tocken"
+        const val KEY_ACC_TOCKEN = "access_token"
         const val KEY_LAST_SEARCH = "last_search"
         const val KEY_IS_DEF = "is_def"
         const val KEY_LOGIN = "login"
         const val KEY_COUNT_REQUESTS = "requests_count"
-        const val KEY_INCOMPLETE_SEARCH = "incomplite_search"
+        const val KEY_INCOMPLETE_SEARCH = "incomplete_search"
         const val KEY_SKIP_PROCESSING = "skip_processing"
         const val KEY_IS_PARTNER_ACC = "is_partner_acc"
         const val KEY_ACC_TITLE = "acc_title"
@@ -792,7 +789,7 @@ class DbHelper @Inject constructor(@ApplicationContext app: Context) {
         const val KEY_PORT = "port"
         const val KEY_PROXY_LOGIN = "proxy_login"
         const val KEY_PROXY_PASSWORD = "proxy_password"
-        const val KEY_ACCAUNT = "accaunt"
+        const val KEY_ACCOUNT = "account"
         const val KEY_PROXY = "proxy"
 
         const val KEY_SEARCH_SOURCE = "search_source"

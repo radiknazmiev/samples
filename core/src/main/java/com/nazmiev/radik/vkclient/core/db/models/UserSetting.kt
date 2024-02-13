@@ -6,10 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user_settings")
 data class UserSetting(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
-    @ColumnInfo(name = "acc_tocken")
+    @ColumnInfo(name = "access_token")
     val accessToken: String?,
     @ColumnInfo(name = "country")
     val country: Int?,
@@ -48,3 +45,8 @@ data class UserSetting(
     @ColumnInfo(name = "user_id")
     val userId: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

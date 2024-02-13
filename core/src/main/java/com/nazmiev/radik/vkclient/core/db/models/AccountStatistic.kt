@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "account_statistic")
 data class AccountStatistic(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "static_date")
     val staticDate: String,
     @ColumnInfo(name = "account_id")
@@ -24,3 +21,8 @@ data class AccountStatistic(
     @ColumnInfo(name = "unfollow_count", defaultValue = "0")
     val unfollowCount: Int,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

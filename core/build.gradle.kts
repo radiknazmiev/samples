@@ -30,6 +30,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+        create("forHuawei") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            apply(plugin = "com.huawei.agconnect")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

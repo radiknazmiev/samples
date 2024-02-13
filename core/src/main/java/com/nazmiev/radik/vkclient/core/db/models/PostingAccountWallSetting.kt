@@ -6,11 +6,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "posting_account_wall_settings")
 data class PostingAccountWallSetting(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "script_id")
     val scriptId: Int?,
     @ColumnInfo(name = "post_id")
     val postId: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

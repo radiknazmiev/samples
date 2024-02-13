@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "planning_post_groups")
 data class PlanningPostGroups(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "planning_post_id")
     val planningPostId: Int?,
     @ColumnInfo(name = "group_id")
@@ -16,3 +13,8 @@ data class PlanningPostGroups(
     @ColumnInfo(name = "group_name")
     val groupName: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

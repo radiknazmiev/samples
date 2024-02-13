@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "group_search_setting")
 data class GroupSearchSetting(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "user_id")
     val userId: Int?,
     @ColumnInfo(name = "search_source")
@@ -38,3 +35,8 @@ data class GroupSearchSetting(
     @ColumnInfo(name = "setting_title")
     val settingTitle: String?
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

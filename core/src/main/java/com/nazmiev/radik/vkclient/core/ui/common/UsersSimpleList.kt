@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.magnifier
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
@@ -32,23 +34,9 @@ import coil.compose.AsyncImage
 import com.nazmiev.radik.vkclient.core.http.models.User
 
 @Composable
-internal fun UsersList(usersList: List<User>, userCheck: (User) -> Unit) {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
-            .padding(10.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(items = usersList, key = null) { user ->
-            UserItem(user = user, userCheck)
-        }
-    }
-}
-
-@Composable
 internal fun UserItem(user: User, userCheck: (User) -> Unit) {
     val fullName = "${user.firstName} ${user.lastName}"
+    val note = user.note
 
     Card(
         modifier = Modifier.clickable {
@@ -75,6 +63,11 @@ internal fun UserItem(user: User, userCheck: (User) -> Unit) {
                     text = fullName,
                     fontWeight = FontWeight.Bold,
                     fontSize = TextUnit(value = 14F, type = TextUnitType.Sp)
+                )
+                Text(
+                    modifier = Modifier.padding(top = 5.dp),
+                    text = note,
+                    fontSize = TextUnit(value = 12F, type = TextUnitType.Sp)
                 )
             }
             Spacer(

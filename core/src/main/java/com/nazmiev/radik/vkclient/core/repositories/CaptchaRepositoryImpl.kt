@@ -1,16 +1,14 @@
 package com.nazmiev.radik.vkclient.core.repositories
 
 import android.content.SharedPreferences
-import com.nazmiev.radik.vkclient.core.Constants.CAPTCHA_ANTI_CAPTCHA_KEY
-import com.nazmiev.radik.vkclient.core.Constants.CAPTCHA_BOT_CAPTCHA_KEY
-import com.nazmiev.radik.vkclient.core.Constants.CAPTCHA_CPTCH_KEY
-import com.nazmiev.radik.vkclient.core.Constants.CAPTCHA_DEFAULT_ANTIGATE_SERVICE
-import com.nazmiev.radik.vkclient.core.Constants.CAPTCHA_RUCAPTCHA_KEY
+import com.nazmiev.radik.vkclient.core.utils.Constants.CAPTCHA_ANTI_CAPTCHA_KEY
+import com.nazmiev.radik.vkclient.core.utils.Constants.CAPTCHA_BOT_CAPTCHA_KEY
+import com.nazmiev.radik.vkclient.core.utils.Constants.CAPTCHA_CPTCH_KEY
+import com.nazmiev.radik.vkclient.core.utils.Constants.CAPTCHA_DEFAULT_ANTIGATE_SERVICE
+import com.nazmiev.radik.vkclient.core.utils.Constants.CAPTCHA_RUCAPTCHA_KEY
 import com.nazmiev.radik.vkclient.core.http.CaptchaHttpService
 import com.nazmiev.radik.vkclient.core.http.models.CaptchaRequestBody
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 import javax.inject.Named

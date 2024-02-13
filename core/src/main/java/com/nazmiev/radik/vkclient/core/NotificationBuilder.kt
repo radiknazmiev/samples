@@ -3,6 +3,7 @@ package com.nazmiev.radik.vkclient.core
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.os.Build
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
@@ -34,7 +35,11 @@ class NotificationBuilder {
                 .setProgress(100, progress, false)
                 .build()
 
-            return ForegroundInfo(notificationId, notification)
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ForegroundInfo(notificationId, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+            } else {
+                ForegroundInfo(notificationId, notification)
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)

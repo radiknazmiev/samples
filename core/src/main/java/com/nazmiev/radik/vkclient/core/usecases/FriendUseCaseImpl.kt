@@ -1,6 +1,6 @@
 package com.nazmiev.radik.vkclient.core.usecases
 
-import com.nazmiev.radik.vkclient.core.Constants
+import com.nazmiev.radik.vkclient.core.utils.Constants
 import com.nazmiev.radik.vkclient.core.http.HttpService
 import com.nazmiev.radik.vkclient.core.http.models.FriendAdd
 import com.nazmiev.radik.vkclient.core.http.models.FriendRequests

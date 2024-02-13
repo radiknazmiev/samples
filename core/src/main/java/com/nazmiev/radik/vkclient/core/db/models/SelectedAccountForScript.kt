@@ -6,11 +6,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "selected_accounts_for_script")
 data class SelectedAccountForScript(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "script_id")
     val scriptId: Int?,
-    @ColumnInfo(name = "accaunt")
+    @ColumnInfo(name = "account")
     val account: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

@@ -1,4 +1,4 @@
-package com.nazmiev.radik.vkclient.core
+package com.nazmiev.radik.vkclient.core.utils
 
 object Constants {
     const val ACCESS_TOKEN = "access_token"
@@ -8,6 +8,7 @@ object Constants {
     const val VK_API_VERSION = "5.154"
 
     const val TASK_TYPE_ACCEPT_FRIENDS_REQUESTS = 100
+    const val TASK_TYPE_POSTING = 200
 
     const val TASK_STATUS_WAITING = 1
     const val TASK_STATUS_RUNNING = 2

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "selected_accounts_for_task")
 data class SelectedAccountForTask(
     @ColumnInfo(name = "task_id") val taskId: Int,
-    @ColumnInfo(name = "accaunt") val account: Int
+    @ColumnInfo(name = "account") val account: Int
 )
 {
     @PrimaryKey(autoGenerate = true)

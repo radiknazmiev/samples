@@ -6,14 +6,14 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nazmiev.radik.vkclient.core.Constants.TASK_TYPE_ACCEPT_FRIENDS_REQUESTS
-import com.nazmiev.radik.vkclient.core.RequestFields.HAS_PHOTO
-import com.nazmiev.radik.vkclient.core.RequestFields.PHOTO_100
-import com.nazmiev.radik.vkclient.core.RequestFields.PHOTO_200
-import com.nazmiev.radik.vkclient.core.RequestFields.PHOTO_50
+import com.nazmiev.radik.vkclient.core.utils.Constants.TASK_TYPE_ACCEPT_FRIENDS_REQUESTS
+import com.nazmiev.radik.vkclient.core.utils.RequestFields.HAS_PHOTO
+import com.nazmiev.radik.vkclient.core.utils.RequestFields.PHOTO_100
+import com.nazmiev.radik.vkclient.core.utils.RequestFields.PHOTO_200
+import com.nazmiev.radik.vkclient.core.utils.RequestFields.PHOTO_50
 import com.nazmiev.radik.vkclient.core.http.models.User
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCase
-import com.nazmiev.radik.vkclient.core.usecases.LocalUserUseCase
+import com.nazmiev.radik.vkclient.core.usecases.UserUseCase
 import com.nazmiev.radik.vkclient.core.usecases.RemoteUserUseCase
 import com.nazmiev.radik.vkclient.core.usecases.TaskUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AcceptFriendTaskSettingsViewModel @Inject constructor(
-    private val localUserUseCase: LocalUserUseCase,
+    private val userUseCase: UserUseCase,
     private val remoteUserUseCase: RemoteUserUseCase,
     private val taskUseCase: TaskUseCase
 ) : ViewModel() {
@@ -46,7 +46,7 @@ class AcceptFriendTaskSettingsViewModel @Inject constructor(
 
     private fun getAllUsers() {
         viewModelScope.launch {
-            val localUsers = localUserUseCase.getAllUsers()
+            val localUsers = userUseCase.getAllUsers()
             val accessToken = localUsers[0].accessToken
 
             val userIds = mutableListOf<String>()
@@ -58,6 +58,9 @@ class AcceptFriendTaskSettingsViewModel @Inject constructor(
 
             if (accessToken != null) {
                 users.addAll(remoteUserUseCase.getUsersInfo(accessToken, userIds, fields))
+                users.map { remoteUser ->
+                    remoteUser.note = localUsers.first { it.login == remoteUser.id.toString() }.accountTitle?: ""
+                }
                 _state.value = State.UsersSuccess(
                     users, sharedPreferences.getBoolean(
                         ACCEPT_FRIENDS_TASK_IS_REPEAT, false

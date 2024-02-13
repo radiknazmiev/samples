@@ -6,10 +6,13 @@
     <string name="core_txt_repeat_task">Repeat task</string>
     <string name="core_txt_send_accompanying_messages">Send accompanying messages</string>
     <string name="core_txt_accept_incoming_requests">Accept incoming requests</string>
+    <string name="core_txt_select_settings">Select settings</string>
+    <string name="core_txt_new_posting">New posting</string>
     <string name="core_txt_start_account_processing"><![CDATA[Start account processing <br>]]></string>
     <string name="core_txt_processing_complete"><![CDATA[Processing is complete <br><br>]]></string>
+    <string name="core_txt_sending_message"><![CDATA[Sending messages <br>]]></string>
 
-    <string name="core_txt_task_account_string" translatable="false"><![CDATA[<font color="#0ACF00">%1$s</font><br>]]></string>
+    <string name="core_txt_task_account_string"><![CDATA[<font color="#0ACF00">Account: %1$s</font><br>]]></string>
 
     <plurals name="plurals_days">
         <item quantity="zero">no day</item>
@@ -18,5 +21,14 @@
         <item quantity="few">%1$d days</item>
         <item quantity="many">%1$d days</item>
         <item quantity="other">%1$d days</item>
+    </plurals>
+
+    <plurals name="plurals_minutes">
+        <item quantity="zero">no minute</item>
+        <item quantity="one">%1$d minute</item>
+        <item quantity="two">%1$d minutes</item>
+        <item quantity="few">%1$d minutes</item>
+        <item quantity="many">%1$d minutes</item>
+        <item quantity="other">%1$d minutes</item>
     </plurals>
 </resources>

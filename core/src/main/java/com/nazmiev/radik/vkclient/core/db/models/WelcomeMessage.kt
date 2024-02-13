@@ -4,13 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "welcom_message")
+@Entity(tableName = "welcome_message")
 data class WelcomeMessage(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "user_id")
     val userId: Int?,
     @ColumnInfo(name = "message_id")
     val messageId: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

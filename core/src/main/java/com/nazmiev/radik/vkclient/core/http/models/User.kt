@@ -23,4 +23,7 @@ data class User(
     val error: Error?,
 
     var isChecked: Boolean = false
-)
+) {
+    var note = ""
+    var accessToken = ""
+}

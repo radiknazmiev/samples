@@ -5,13 +5,24 @@
     <string name="core_txt_repeat_task">Повторять задание</string>
     <string name="core_txt_send_accompanying_messages">Отправлять сопроводительные сообщения</string>
     <string name="core_txt_accept_incoming_requests">Принять входящие заявки</string>
+    <string name="core_txt_select_settings">Выберите настройки</string>
+    <string name="core_txt_new_posting">Новый постинг</string>
     <string name="core_txt_start_account_processing"><![CDATA[Начинаю обработку аккаунтов <br>]]></string>
     <string name="core_txt_processing_complete"><![CDATA[Обработка окончена <br><br>]]></string>
+    <string name="core_txt_sending_message"><![CDATA[Отправка сообщений <br>]]></string>
+    <string name="core_txt_task_account_string"><![CDATA[<font color="#0ACF00">Аккаунт: %1$s</font><br>]]></string>
 
     <plurals name="plurals_days">
         <item quantity="one">%1$d день</item>
-        <item quantity="few">%1$d дней</item>
+        <item quantity="few">%1$d дня</item>
         <item quantity="many">%1$d дней</item>
         <item quantity="other">%1$d дни</item>
+    </plurals>
+
+    <plurals name="plurals_minutes">
+        <item quantity="one">%1$d минута</item>
+        <item quantity="few">%1$d минуты</item>
+        <item quantity="many">%1$d минут</item>
+        <item quantity="other">%1$d минуты</item>
     </plurals>
 </resources>

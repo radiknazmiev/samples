@@ -23,8 +23,6 @@ fun CustomSlider(
     text: String,
     onValueChange: (position: Float) -> Unit
 ) {
-    val roundedPosition = position.roundToInt()
-
     Column {
         Slider(
             value = position,
@@ -33,11 +31,7 @@ fun CustomSlider(
             steps = steps
         )
         Text(
-            modifier = Modifier.padding(start = 10.dp, bottom = 10.dp), text = pluralStringResource(
-                R.plurals.plurals_days,
-                roundedPosition,
-                roundedPosition
-            )
+            text = text
         )
     }
 }

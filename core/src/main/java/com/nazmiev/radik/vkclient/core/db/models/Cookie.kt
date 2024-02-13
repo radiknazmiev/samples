@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cookies")
 data class Cookie(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "user_id")
     val userId: Int,
     @ColumnInfo(name = "user_agent")
@@ -18,3 +15,8 @@ data class Cookie(
     @ColumnInfo(name = "cookie_value")
     val cookieValue: String,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

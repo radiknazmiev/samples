@@ -43,11 +43,13 @@ import com.nazmiev.radik.vkclient.core.db.dao.VkGroupDao
 import com.nazmiev.radik.vkclient.core.db.dao.WelcomeMessageDao
 import com.nazmiev.radik.vkclient.core.db.models.AccountFolder
 import com.nazmiev.radik.vkclient.core.db.models.AccountFolderRelation
+import com.nazmiev.radik.vkclient.core.db.models.AccountStatistic
 import com.nazmiev.radik.vkclient.core.db.models.Cookie
 import com.nazmiev.radik.vkclient.core.db.models.Foaf
 import com.nazmiev.radik.vkclient.core.db.models.GlobalSetting
 import com.nazmiev.radik.vkclient.core.db.models.GroupChatMessage
 import com.nazmiev.radik.vkclient.core.db.models.GroupSearchSetting
+import com.nazmiev.radik.vkclient.core.db.models.GroupsBlackList
 import com.nazmiev.radik.vkclient.core.db.models.GroupsForPosting
 import com.nazmiev.radik.vkclient.core.db.models.GroupsForProcessing
 import com.nazmiev.radik.vkclient.core.db.models.LinkToUsers
@@ -90,10 +92,12 @@ import com.nazmiev.radik.vkclient.core.db.models.WelcomeMessage
         GlobalSetting::class,
         AccountFolder::class,
         AccountFolderRelation::class,
+        AccountStatistic::class,
         GroupChatMessage::class,
         GroupSearchSetting::class,
         GroupsForPosting::class,
         GroupsForProcessing::class,
+        GroupsBlackList::class,
         LinkToUsers::class,
         LinkToUsersFromFile::class,
         Message::class,
@@ -119,7 +123,7 @@ import com.nazmiev.radik.vkclient.core.db.models.WelcomeMessage
         Foaf::class,
         Cookie::class
     ],
-    version = 57,
+    version = 56,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

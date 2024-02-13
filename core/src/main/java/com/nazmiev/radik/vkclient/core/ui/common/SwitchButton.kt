@@ -20,8 +20,7 @@ import com.nazmiev.radik.vkclient.core.http.models.User
 fun SwitchButton(text: String, checking: (isChecked: Boolean) -> Unit, isChecked: Boolean = false) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = text)

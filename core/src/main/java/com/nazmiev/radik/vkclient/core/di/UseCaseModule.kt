@@ -1,14 +1,18 @@
 package com.nazmiev.radik.vkclient.core.di
 
-import android.content.SharedPreferences
+import com.nazmiev.radik.vkclient.core.db.models.GroupsForProcessing
 import com.nazmiev.radik.vkclient.core.usecases.CaptchaUseCase
 import com.nazmiev.radik.vkclient.core.usecases.CaptchaUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCase
 import com.nazmiev.radik.vkclient.core.usecases.DateUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.FriendUseCase
 import com.nazmiev.radik.vkclient.core.usecases.FriendUseCaseImpl
-import com.nazmiev.radik.vkclient.core.usecases.LocalUserUseCase
-import com.nazmiev.radik.vkclient.core.usecases.LocalUserUseCaseImpl
+import com.nazmiev.radik.vkclient.core.usecases.GroupSearchSettingUseCase
+import com.nazmiev.radik.vkclient.core.usecases.GroupSearchSettingUseCaseImpl
+import com.nazmiev.radik.vkclient.core.usecases.GroupsForProcessingUseCase
+import com.nazmiev.radik.vkclient.core.usecases.GroupsForProcessingUseCaseImpl
+import com.nazmiev.radik.vkclient.core.usecases.UserUseCase
+import com.nazmiev.radik.vkclient.core.usecases.UserUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.MessageUseCase
 import com.nazmiev.radik.vkclient.core.usecases.MessageUseCaseImpl
 import com.nazmiev.radik.vkclient.core.usecases.ProxyUseCase
@@ -21,11 +25,8 @@ import com.nazmiev.radik.vkclient.core.usecases.TaskUseCase
 import com.nazmiev.radik.vkclient.core.usecases.TaskUseCaseImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -38,7 +39,7 @@ abstract class UseCaseModule {
     abstract fun provideDateUseCase(dateUseCaseImpl: DateUseCaseImpl): DateUseCase
 
     @Binds
-    abstract fun provideLocalUserUseCase(localUserUseCaseImpl: LocalUserUseCaseImpl): LocalUserUseCase
+    abstract fun provideLocalUserUseCase(localUserUseCaseImpl: UserUseCaseImpl): UserUseCase
 
     @Binds
     abstract fun provideRemoteUserUseCase(remoteUserUseCaseImpl: RemoteUserUseCaseImpl): RemoteUserUseCase
@@ -57,4 +58,10 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun provideCaptchaUseCase(captchaUseCaseImpl: CaptchaUseCaseImpl): CaptchaUseCase
+
+    @Binds
+    abstract fun provideGroupSearchUseCase(groupSearchSettingUseCaseImpl: GroupSearchSettingUseCaseImpl): GroupSearchSettingUseCase
+
+    @Binds
+    abstract fun provideGroupsForProcessing(groupsForProcessingUseCaseImpl: GroupsForProcessingUseCaseImpl): GroupsForProcessingUseCase
 }

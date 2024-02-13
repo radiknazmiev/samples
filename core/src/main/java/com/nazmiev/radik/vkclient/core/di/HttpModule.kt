@@ -33,7 +33,7 @@ class HttpModule {
     internal fun provideOkhttpClient(): OkHttpClient {
 
         val client = OkHttpClient.Builder()
-            .connectTimeout(20, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         client.addInterceptor { chain ->

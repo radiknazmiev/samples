@@ -23,7 +23,7 @@ interface SelectedAccountsForTaskDao {
 
     @Query("SELECT u.* " +
             "FROM selected_accounts_for_task saft " +
-            "JOIN users u ON saft.accaunt = u.login " +
+            "JOIN users u ON saft.account = u.login " +
             "WHERE task_id = :taskId")
     suspend fun getTaskAccounts(taskId: Int): List<User>
 }

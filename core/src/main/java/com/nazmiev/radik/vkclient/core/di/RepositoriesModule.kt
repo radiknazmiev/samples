@@ -4,6 +4,8 @@ import com.nazmiev.radik.vkclient.core.repositories.CaptchaRepository
 import com.nazmiev.radik.vkclient.core.repositories.CaptchaRepositoryImpl
 import com.nazmiev.radik.vkclient.core.repositories.FriendsRepository
 import com.nazmiev.radik.vkclient.core.repositories.FriendsRepositoryImpl
+import com.nazmiev.radik.vkclient.core.repositories.GroupsForProcessingRepository
+import com.nazmiev.radik.vkclient.core.repositories.GroupsForProcessingRepositoryImpl
 import com.nazmiev.radik.vkclient.core.repositories.MessageRepositoryImpl
 import com.nazmiev.radik.vkclient.core.repositories.MessagesRepository
 import com.nazmiev.radik.vkclient.core.repositories.ProxyRepository
@@ -38,4 +40,7 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun provideCaptchaRepository(captchaRepositoryImpl: CaptchaRepositoryImpl): CaptchaRepository
+
+    @Binds
+    abstract fun provideGroupsForProcessing(groupsForProcessingRepositoryImpl: GroupsForProcessingRepositoryImpl): GroupsForProcessingRepository
 }

@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "proxy_list")
 data class ProxyList(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "hostname")
     val hostname: String,
     @ColumnInfo(name = "port")
@@ -19,6 +16,11 @@ data class ProxyList(
     val proxyPassword: String,
     @ColumnInfo(name = "is_def")
     val isDefault: Int?,
-    @ColumnInfo(name = "accaunt")
+    @ColumnInfo(name = "account")
     val account: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

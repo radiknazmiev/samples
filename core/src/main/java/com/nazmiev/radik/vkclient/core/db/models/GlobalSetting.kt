@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "global_settings")
 data class GlobalSetting(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    val id: Int,
     @ColumnInfo(name = "is_start_task_manager")
     val isStartTaskManager: Int?,
     @ColumnInfo(name = "notif_sound_activated", defaultValue = "true")
@@ -16,3 +13,8 @@ data class GlobalSetting(
     @ColumnInfo(name = "notif_vibration_activated", defaultValue = "true")
     val isNotificationVibrationActivated: String,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

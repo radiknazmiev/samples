@@ -4,13 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "proxy_accaunt")
+@Entity(tableName = "proxy_account")
 data class ProxyAccount(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
-    @ColumnInfo(name = "accaunt")
+    @ColumnInfo(name = "account")
     val account: Int,
     @ColumnInfo(name = "proxy")
     val proxy: Int,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

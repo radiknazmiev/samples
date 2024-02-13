@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "response_message")
 data class ResponseMessage(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "incoming_phrase")
     val incomingPhrase: String?,
     @ColumnInfo(name = "message_id")
@@ -20,3 +17,8 @@ data class ResponseMessage(
     @ColumnInfo(name = "match_percentage")
     val matchPercentage: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

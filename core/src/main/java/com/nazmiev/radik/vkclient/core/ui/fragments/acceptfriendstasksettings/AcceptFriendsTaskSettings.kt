@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Done
@@ -23,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,7 +35,7 @@ import com.nazmiev.radik.vkclient.core.R
 import com.nazmiev.radik.vkclient.core.http.models.User
 import com.nazmiev.radik.vkclient.core.ui.common.CustomSlider
 import com.nazmiev.radik.vkclient.core.ui.common.SwitchButton
-import com.nazmiev.radik.vkclient.core.ui.common.UsersList
+import com.nazmiev.radik.vkclient.core.ui.common.UserItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -129,39 +134,43 @@ fun SettingsView(
     sliderChange: (position: Float) -> Unit,
     sendMessageCheck: (isChecked: Boolean) -> Unit
 ) {
-    Column(
+    LazyColumn(
         modifier = Modifier.padding(paddingValues)
-            .padding(start = 10.dp, end = 10.dp)
+            .padding(start = 10.dp, end = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        SwitchButton(
-            text = stringResource(id = R.string.core_txt_repeat_task),
-            checking = taskRepeatCheck,
-            isChecked = uiState.isRepeat
-        )
-        if (uiState.isRepeat) {
-            CustomSlider(
-                position = uiState.repeatPeriod,
-                range = 0F..7F,
-                steps = 6,
-                text = "days",
-                onValueChange = sliderChange
+        item {
+            SwitchButton(
+                text = stringResource(id = R.string.core_txt_repeat_task),
+                checking = taskRepeatCheck,
+                isChecked = uiState.isRepeat
             )
+            if (uiState.isRepeat) {
+                CustomSlider(
+                    position = uiState.repeatPeriod,
+                    range = 0F..7F,
+                    steps = 6,
+                    text = pluralStringResource(id = R.plurals.plurals_days, count = uiState.repeatPeriod.toInt()),
+                    onValueChange = sliderChange
+                )
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = stringResource(id = R.string.core_txt_send_accompanying_messages))
+                Spacer(
+                    Modifier
+                        .weight(1f)
+                )
+                Checkbox(
+                    checked = uiState.isSendMessage,
+                    onCheckedChange = sendMessageCheck
+                )
+            }
         }
-        Row(
-            modifier = Modifier.padding(start = 10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = stringResource(id = R.string.core_txt_send_accompanying_messages))
-            Spacer(
-                Modifier
-                    .weight(1f)
-            )
-            Checkbox(
-                checked = uiState.isSendMessage,
-                onCheckedChange = sendMessageCheck
-            )
+        items(items = uiState.users, key = null) { user ->
+            UserItem(user = user, userCheck)
         }
-        UsersList(uiState.users, userCheck)
     }
 }
 

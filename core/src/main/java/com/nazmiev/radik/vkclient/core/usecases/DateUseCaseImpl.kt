@@ -18,4 +18,12 @@ class DateUseCaseImpl @Inject constructor(): DateUseCase {
         val currentTime = Calendar.getInstance().time
         return simpleDateFormat.format(currentTime)
     }
+
+    override fun getFutureDateTime(milliseconds: Int): String {
+        val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.US)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MILLISECOND, milliseconds)
+        val time = calendar.time
+        return simpleDateFormat.format(time)
+    }
 }

@@ -6,10 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "search_settings")
 data class SearchSetting(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
-    @ColumnInfo(name = "accaunt")
+    @ColumnInfo(name = "account")
     val account: Int?,
     @ColumnInfo(name = "search_source")
     val searchSource: Int?,
@@ -24,3 +21,8 @@ data class SearchSetting(
     @ColumnInfo(name = "sort")
     val sort: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

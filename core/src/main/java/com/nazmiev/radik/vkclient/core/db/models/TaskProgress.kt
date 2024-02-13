@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "task_progress")
 data class TaskProgress(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "type")
     val type: Int?,
     @ColumnInfo(name = "account_number")
@@ -23,6 +20,11 @@ data class TaskProgress(
     val isPayed: Int?,
     @ColumnInfo(name = "thread_number")
     val threadNumber: Int?,
-    @ColumnInfo(name = "accaunt")
+    @ColumnInfo(name = "account")
     val account: Int?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}

@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "messages_attachments")
 data class MessagesAttachments(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val id: Int,
     @ColumnInfo(name = "message_id")
     val messageId: Int?,
     @ColumnInfo(name = "attach_id")
@@ -26,3 +23,8 @@ data class MessagesAttachments(
     @ColumnInfo(name = "file_path")
     val filePath: String?,
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    var id: Int = 0
+}
